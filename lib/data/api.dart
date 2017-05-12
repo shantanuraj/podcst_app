@@ -27,18 +27,9 @@ class PodcstApi {
     return response.data;
   }
 
-  static Future<List<Podcst>> getPopular() async {
-    String url = _getUrl(_popular);
-    return _getPodcsts(url);
-  }
+  static Future<List<Podcst>> getPopular() => _getPodcsts(_getUrl(_popular));
 
-  static Future<List<Podcst>> getFeatured() async {
-    String url = _getUrl(_featured);
-    return _getPodcsts(url);
-  }
+  static Future<List<Podcst>> getFeatured() => _getPodcsts(_getUrl(_featured));
 
-  static Future<List<Podcst>> getTrending() async {
-    String url = _getUrl(_trending);
-    return _getPodcsts(url);
-  }
+  static Future<List<Podcst>> getTrending() => _getPodcsts(_getUrl(_trending));
 }
