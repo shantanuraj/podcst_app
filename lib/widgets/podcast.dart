@@ -9,8 +9,10 @@ class PodcastWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Text(
-      _podcst.title,
+    return new ListTile(
+      title: new Text(_podcst.title),
+      subtitle: new Text(_podcst.author),
+      leading: new Image.network(_podcst.thumbnail),
     );
   }
 }
