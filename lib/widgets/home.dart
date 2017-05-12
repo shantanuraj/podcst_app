@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:podcst_app/data/api.dart';
+import 'package:podcst_app/data/podcst.dart';
 
 class HomeWidget extends StatefulWidget {
   HomeWidget({Key key, this.title}) : super(key: key);
@@ -10,27 +12,42 @@ class HomeWidget extends StatefulWidget {
 }
 
 class _HomeWidgetState extends State<HomeWidget> {
-  int _counter = 0;
+  bool _isLoading = true;
+  List<Podcst> _podcsts;
 
-  void _increment() {
+  @override
+  void initState() {
+    super.initState();
+    _isLoading = true;
+    PodcstApi.getFeatured().then(onPodcstsLoaded);
+  }
+
+  onPodcstsLoaded(List<Podcst> podcsts) {
     setState(() {
-      _counter++;
+      _isLoading = false;
+      _podcsts = podcsts;
     });
   }
 
   @override
   Widget build(BuildContext context) {
+
+    var content;
+    if (_isLoading) {
+      content = new Text('Loading...');
+    } else {
+      content = new Text('Loaded! ${_podcsts.length}');
+    }
+
     return new Scaffold(
       appBar: new AppBar(
         title: new Text(widget.title),
       ),
       body: new Center(
-        child: new Text(
-          'Button clicked $_counter time${ _counter == 1 ? '' : 's' }.',
-        ),
+        child: content,
       ),
       floatingActionButton: new FloatingActionButton(
-        onPressed: _increment,
+        onPressed: () => {},
         tooltip: 'Increment',
         child: new Icon(Icons.add),
       ),
