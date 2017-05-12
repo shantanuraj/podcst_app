@@ -51,11 +51,6 @@ class _HomeWidgetState extends State<HomeWidget> {
       body: new Center(
         child: content,
       ),
-      floatingActionButton: new FloatingActionButton(
-        onPressed: () => {},
-        tooltip: 'Increment',
-        child: new Icon(Icons.add),
-      ),
     );
   }
 }
