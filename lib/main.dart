@@ -11,10 +11,7 @@ class PodcstApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Podcst',
-      theme: new ThemeData(
-        primarySwatch: Colors.indigo,
-        accentColor: Colors.pink,
-      ),
+      theme: new ThemeData.dark(),
       home: new HomeWidget(title: 'Podcst'),
     );
   }
