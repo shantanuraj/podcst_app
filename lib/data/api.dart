@@ -29,7 +29,6 @@ class PodcstApi {
   static Future<List<Podcst>> getFeatured() => _getPodcsts(_getUrl(_top));
 
   static Future<Feed> getFeed(String feed) async {
-    print(_getFeedUrl(feed));
     var res = await _http.get(_getFeedUrl(feed));
     Map raw = JSON.decode(res.body);
 

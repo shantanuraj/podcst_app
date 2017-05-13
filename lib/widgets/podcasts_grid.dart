@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:podcst_app/data/api.dart';
 import 'package:podcst_app/data/podcst.dart';
+import 'package:podcst_app/widgets/feed_info.dart';
 
 class PodcastGridWidget extends StatelessWidget {
 
@@ -25,10 +25,8 @@ class PodcastWidget extends StatelessWidget {
   PodcastWidget(this._podcst);
 
   onTap(BuildContext context) {
-    PodcstApi.getFeed(_podcst.feed)
-    .then(print);
     Scaffold.of(context)
-        .showBottomSheet((context) => new PodcastWidget(_podcst));
+        .showBottomSheet((context) => new FeedWrapper(url: _podcst.feed));
   }
 
   @override
