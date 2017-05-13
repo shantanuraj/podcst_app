@@ -20,7 +20,7 @@ class PodcstApi {
     var res = await _http.get(url);
 
     Map raw = JSON.decode(res.body);
-    PodcstResponse response = PodcstResponse.Parse(raw);
+    PodcstResponse response = PodcstResponse.parse(raw);
 
     return response.data;
   }

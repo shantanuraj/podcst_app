@@ -33,7 +33,7 @@ class Podcst {
     this.thumbnail
   });
 
-  static Podcst Parse(Map raw) {
+  static Podcst parse(Map raw) {
     return new Podcst(
       id: raw['id'],
       url: raw['url'],

@@ -7,11 +7,11 @@ class PodcstResponse {
 
   const PodcstResponse({ this.statusCode, this.message, this.data });
 
-  static PodcstResponse Parse(Map raw) {
+  static PodcstResponse parse(Map raw) {
     return new PodcstResponse(
       statusCode: raw['statusCode'],
       message: raw['message'],
-      data: (raw['data'] as List<Map>).map(Podcst.Parse).toList()
+      data: (raw['data'] as List<Map>).map(Podcst.parse).toList()
     );
   }
 }
