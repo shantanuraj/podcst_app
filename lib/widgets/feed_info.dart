@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:podcst_app/data/api.dart';
 import 'package:podcst_app/data/feed.dart';
+import 'package:flutter/painting.dart';
 
 class FeedWrapper extends StatefulWidget {
   FeedWrapper({Key key, this.url}) : super(key: key);
@@ -37,11 +38,16 @@ class _FeedWrapperState extends State<FeedWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    if (_isLoading) {
-      return new Text("Loading...");
-    } else {
-      return new FeedInfo(_feed);
-    }
+    return new Row(
+      children: [
+        _isLoading ?
+          new Padding(
+            padding: const EdgeInsets.all(32.0),
+            child: new Text('Loading...'),
+          ) :
+          new FeedInfo(_feed),
+      ],
+    );
   }
 }
 
@@ -52,6 +58,14 @@ class FeedInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Text(_feed.episodes.length.toString());
+    return new Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        new Image.network(
+          _feed.cover,
+          fit: BoxFit.cover,
+          width: context.size.width,
+      ],
+    );
   }
 }
