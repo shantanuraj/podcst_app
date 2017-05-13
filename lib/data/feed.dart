@@ -1,3 +1,4 @@
+import 'package:podcst_app/data/constants.dart';
 import 'package:podcst_app/data/episode.dart';
 
 class Feed {
@@ -27,7 +28,7 @@ class Feed {
     return new Feed(
       title: raw['title'],
       link: raw['link'],
-      published: raw['published'] ? raw['published'] : -1,
+      published: raw['published'] != null ? raw['published'] : DEFAULT_INT,
       description: raw['description'],
       author: raw['author'],
       cover: raw['cover'],

@@ -1,3 +1,4 @@
+import 'package:podcst_app/data/constants.dart';
 import 'package:podcst_app/data/sound_file.dart';
 
 class Episode {
@@ -31,8 +32,8 @@ class Episode {
     return new Episode(
       title: raw['title'],
       summary: raw['summary'],
-      published: raw['published'] ? raw['published'] : -1,
-      cover: raw['cover'] ? raw['cover'] : '',
+      published: raw['published'] != null ? raw['published'] : DEFAULT_INT,
+      cover: raw['cover'] != null ? raw['cover'] : DEFAULT_STR,
       explicit: raw['explicit'],
       duration: raw['duration'],
       link: raw['link'],
