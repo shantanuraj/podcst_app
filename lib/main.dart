@@ -13,6 +13,7 @@ class PodcstApp extends StatelessWidget {
       title: 'Podcst',
       theme: new ThemeData(
         primarySwatch: Colors.indigo,
+        accentColor: Colors.pink,
       ),
       home: new HomeWidget(title: 'Podcst'),
     );
