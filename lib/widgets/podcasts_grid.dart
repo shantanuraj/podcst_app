@@ -23,12 +23,21 @@ class PodcastWidget extends StatelessWidget {
 
   PodcastWidget(this._podcst);
 
+  onTap(BuildContext context) {
+    var sb = new SnackBar(
+        content: new Text(_podcst.title),
+        backgroundColor: Colors.teal,
+    );
+    Scaffold.of(context).showSnackBar(sb);
+  }
+
   @override
   Widget build(BuildContext context) {
     return new ListTile(
       title: new Text(_podcst.title),
       subtitle: new Text(_podcst.author),
       leading: new Image.network(_podcst.thumbnail),
+      onTap: () => onTap(context),
     );
   }
 }
