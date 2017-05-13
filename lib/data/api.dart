@@ -12,11 +12,9 @@ class PodcstApi {
   static final String _trending = '/trending';
   static final String _featured = '/featured';
 
-  static final _http = createHttpClient();
+  static String _getUrl(String endpoint) => _baseUrl + endpoint;
 
-  static String _getUrl(String endpoint) {
-    return _baseUrl + endpoint;
-  }
+  static final _http = createHttpClient();
 
   static Future<List<Podcst>> _getPodcsts(String url) async {
     var res = await _http.get(url);
