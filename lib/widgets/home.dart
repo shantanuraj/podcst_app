@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:podcst_app/widgets/podcast.dart';
+import 'package:podcst_app/widgets/podcasts_grid.dart';
 
 import 'package:podcst_app/data/api.dart';
 import 'package:podcst_app/data/podcst.dart';
@@ -39,9 +39,7 @@ class _HomeWidgetState extends State<HomeWidget> {
     if (_isLoading) {
       content = new Text('Loading...');
     } else {
-      content = new ListView(
-        children: _podcsts.map((podcst) => new PodcastWidget(podcst)).toList()
-      );
+      content = new PodcastGridWidget(_podcsts);
     }
 
     return new Scaffold(
