@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:podcst_app/widgets/home.dart';
 
 void main() {
-  runApp(new MyApp());
+  runApp(new PodcstApp());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class PodcstApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Podcst',
       theme: new ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.indigo,
       ),
       home: new HomeWidget(title: 'Podcst'),
     );
