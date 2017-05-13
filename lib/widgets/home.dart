@@ -22,7 +22,7 @@ class _HomeWidgetState extends State<HomeWidget> {
   void initState() {
     super.initState();
     _isLoading = true;
-    PodcstApi.getPopular().then(onPodcstsLoaded);
+    PodcstApi.getFeatured().then(onPodcstsLoaded);
   }
 
   onPodcstsLoaded(List<Podcst> podcsts) {

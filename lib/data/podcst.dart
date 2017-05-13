@@ -1,50 +1,42 @@
 class Podcst {
-  /// UUID podcast id
-  final String id;
-  /// Podcast homepage
-  final String url;
-  /// Podcast title
-  final String title;
-  /// Podcast description blurb
-  final String description;
-  /// Podcast large image
-  final String cover;
-  /// Podcast Category
-  final String category;
-  /// Can either be `audio` or `video`
-  final String media;
-  /// Podcast locale
-  final String language;
+  /// Podcast id
+  final int id;
+  /// Podcast feed
+  final String feed;
   /// Podcast author
   final String author;
+  /// Podcast episode count
+  final int count;
+  /// Podcast large image
+  final String cover;
+  /// Podcast explicitness
+  final String explicit;
   /// Podcast small image
   final String thumbnail;
+  /// Podcast title
+  final String title;
 
   const Podcst({
     this.id,
-    this.url,
-    this.title,
-    this.description,
-    this.cover,
-    this.category,
-    this.media,
-    this.language,
+    this.feed,
     this.author,
-    this.thumbnail
+    this.count,
+    this.cover,
+    this.explicit,
+    this.thumbnail,
+    this.title
   });
 
   static Podcst parse(Map raw) {
     return new Podcst(
       id: raw['id'],
-      url: raw['url'],
-      title: raw['title'],
-      description: raw['description'],
-      cover: raw['cover'],
-      category: raw['category'],
-      media: raw['media'],
-      language: raw['language'],
+      feed: raw['feed'],
       author: raw['author'],
+      count: raw['count'],
+      cover: raw['cover'],
+      explicit: raw['explicit'],
       thumbnail: raw['thumbnail'],
+      title: raw['title'],
     );
   }
 }
