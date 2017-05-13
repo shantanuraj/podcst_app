@@ -58,8 +58,7 @@ class FeedInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return new Row(
       children: [
         new Image.network(
           _feed.cover,
