@@ -64,7 +64,8 @@ class FeedInfo extends StatelessWidget {
         new Image.network(
           _feed.cover,
           fit: BoxFit.cover,
-          width: context.size.width,
+          width: 410.0,
+        ),
       ],
     );
   }
