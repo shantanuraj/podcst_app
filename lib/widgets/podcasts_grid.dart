@@ -24,11 +24,8 @@ class PodcastWidget extends StatelessWidget {
   PodcastWidget(this._podcst);
 
   onTap(BuildContext context) {
-    var sb = new SnackBar(
-        content: new Text(_podcst.title),
-        backgroundColor: Colors.teal,
-    );
-    Scaffold.of(context).showSnackBar(sb);
+    Scaffold.of(context)
+        .showBottomSheet((context) => new PodcastWidget(_podcst));
   }
 
   @override
