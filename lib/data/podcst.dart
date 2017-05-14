@@ -29,14 +29,14 @@ class Podcst {
 
   static Podcst parse(Map raw) {
     return new Podcst(
-      id: raw['id'],
-      feed: raw['feed'],
-      author: raw['author'],
-      count: raw['count'],
-      cover: raw['cover'],
-      explicit: raw['explicit'],
-      thumbnail: raw['thumbnail'],
-      title: raw['title'],
+      id: raw['id'] as int,
+      feed: raw['feed'] as String,
+      author: raw['author'] as String,
+      count: raw['count'] as int,
+      cover: raw['cover'] as String,
+      explicit: raw['explicit'] as String,
+      thumbnail: raw['thumbnail'] as String,
+      title: raw['title'] as String,
     );
   }
 }

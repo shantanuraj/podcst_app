@@ -20,7 +20,7 @@ class PodcstApi {
   static Future<List<Podcst>> _getPodcsts(String url) async {
     var res = await _http.get(url);
 
-    List<Map> raw = JSON.decode(res.body);
+    List<Map> raw = JSON.decode(res.body) as List<Map>;
     PodcstResponse response = PodcstResponse.parse(raw);
 
     return response.data;
@@ -30,7 +30,7 @@ class PodcstApi {
 
   static Future<Feed> getFeed(String feed) async {
     var res = await _http.get(_getFeedUrl(feed));
-    Map raw = JSON.decode(res.body);
+    Map raw = JSON.decode(res.body) as Map;
 
     return Feed.parse(raw);
   }

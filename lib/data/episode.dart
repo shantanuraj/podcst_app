@@ -30,17 +30,17 @@ class Episode {
 
   static Episode parse(Map raw) {
     return new Episode(
-      title: raw['title'],
-      summary: raw['summary'],
-      published: raw['published'] != null ? raw['published'] : DEFAULT_INT,
-      cover: raw['cover'] != null ? raw['cover'] : DEFAULT_STR,
-      explicit: raw['explicit'],
-      duration: raw['duration'],
-      link: raw['link'],
-      file: SoundFile.parse(raw['file']),
-      author: raw['author'],
-      episodeArt: raw['episodeArt'],
-      showNotes: raw['showNotes'],
+      title: raw['title'] as String,
+      summary: raw['summary'] as String,
+      published: raw['published'] != null ? raw['published'] as int : kDefaultInt,
+      cover: raw['cover'] != null ? raw['cover'] as String : kDefaultStr,
+      explicit: raw['explicit'] as bool,
+      duration: raw['duration'] as int,
+      link: raw['link'] as String,
+      file: SoundFile.parse(raw['file'] as Map),
+      author: raw['author'] as String,
+      episodeArt: raw['episodeArt'] as String,
+      showNotes: raw['showNotes'] as String,
     );
   }
 }

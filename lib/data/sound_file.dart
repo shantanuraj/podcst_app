@@ -9,11 +9,11 @@ class SoundFile {
     this.length
   });
 
-  static parse(Map raw) {
+  static SoundFile parse(Map raw) {
     return new SoundFile(
-      type: raw['type'],
-      url: raw['url'],
-      length: raw['length'],
+      type: raw['type'] as String,
+      url: raw['url'] as String,
+      length: raw['length'] as int,
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:podcst_app/widgets/home.dart';
+import './widgets/home.dart';
 
 void main() {
   runApp(new PodcstApp());

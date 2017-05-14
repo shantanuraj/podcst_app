@@ -26,15 +26,15 @@ class Feed {
 
   static Feed parse(Map raw) {
     return new Feed(
-      title: raw['title'],
-      link: raw['link'],
-      published: raw['published'] != null ? raw['published'] : DEFAULT_INT,
-      description: raw['description'],
-      author: raw['author'],
-      cover: raw['cover'],
-      keywords: raw['keywords'],
-      explicit: raw['explicit'],
-      episodes: raw['episodes'].map(Episode.parse).toList(),
+      title: raw['title'] as String,
+      link: raw['link'] as String,
+      published: raw['published'] != null ? raw['published'] as int : kDefaultInt,
+      description: raw['description'] as String,
+      author: raw['author'] as String,
+      cover: raw['cover'] as String,
+      keywords: raw['keywords'] as List<String>,
+      explicit: raw['explicit'] as bool,
+      episodes: (raw['episodes'] as List<Map>).map(Episode.parse).toList(),
     );
   }
 }

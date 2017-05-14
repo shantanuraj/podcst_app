@@ -1,5 +1,5 @@
-/// [DEFAULT_INT] fallback for when int val is not available
-const DEFAULT_INT = -1;
+/// [kDefaultInt] fallback for when int val is not available
+const kDefaultInt = -1;
 
-/// [DEFAULT_STR] fallback for when string val is not available
-const DEFAULT_STR = '';
+/// [kDefaultStr] fallback for when string val is not available
+const kDefaultStr = '';
