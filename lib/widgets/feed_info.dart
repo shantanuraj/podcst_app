@@ -2,29 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:podcst_app/data/api.dart';
 import 'package:podcst_app/data/feed.dart';
+import 'package:podcst_app/data/podcst.dart';
 
 class FeedWrapper extends StatefulWidget {
-  FeedWrapper({Key key, this.url}) : super(key: key);
+  FeedWrapper({Key key, this.podcst}) : super(key: key);
 
-  final String url;
+  final Podcst podcst;
 
   @override
-  _FeedWrapperState createState() => new _FeedWrapperState(url);
+  _FeedWrapperState createState() => new _FeedWrapperState(podcst);
 }
 
 class _FeedWrapperState extends State<FeedWrapper> {
-  final String url;
+  final Podcst _podcst;
 
   bool _isLoading;
   Feed _feed;
 
-  _FeedWrapperState(this.url);
+  _FeedWrapperState(this._podcst);
 
   @override
   void initState() {
     super.initState();
     _isLoading = true;
-    PodcstApi.getFeed(url).then(onFeedLoaded);
+    PodcstApi.getFeed(_podcst.feed).then(onFeedLoaded);
   }
 
   void onFeedLoaded(Feed feed) {
@@ -40,9 +41,9 @@ class _FeedWrapperState extends State<FeedWrapper> {
       children: [
         _isLoading
             ? new Padding(
-                padding: const EdgeInsets.all(32.0),
-                child: new Text('Loading...'),
-              )
+          padding: const EdgeInsets.all(32.0),
+          child: new Text('Loading...'),
+        )
             : new FeedInfo(_feed),
       ],
     );
