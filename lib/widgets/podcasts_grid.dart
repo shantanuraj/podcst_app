@@ -17,7 +17,7 @@ class PodcastGridWidget extends StatelessWidget {
       children: <Widget>[
         new Expanded(
             child: new GridView.count(
-              crossAxisCount: (orientation == Orientation.portrait) ? 2 : 4,
+              crossAxisCount: (orientation == Orientation.portrait) ? 2 : 3,
               mainAxisSpacing: 4.0,
               crossAxisSpacing: 4.0,
               padding: const EdgeInsets.all(4.0),
