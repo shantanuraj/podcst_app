@@ -17,7 +17,7 @@ class PodcastGridWidget extends StatelessWidget {
       children: <Widget>[
         new Expanded(
             child: new GridView.count(
-              crossAxisCount: (orientation == Orientation.portrait) ? 2 : 3,
+              crossAxisCount: (orientation == Orientation.portrait) ? 2 : 4,
               mainAxisSpacing: 4.0,
               crossAxisSpacing: 4.0,
               padding: const EdgeInsets.all(4.0),
@@ -33,23 +33,45 @@ class PodcastGridWidget extends StatelessWidget {
   }
 }
 
-class PodcastWidget extends StatelessWidget {
-  final Podcst _podcst;
+class _GridTitleText extends StatelessWidget {
+  const _GridTitleText(this.text);
 
-  PodcastWidget(this._podcst);
-
-  void onTap(BuildContext context) {
-    Scaffold.of(context).showBottomSheet<FeedWrapper>(
-            (context) => new FeedWrapper(url: _podcst.feed));
-  }
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    return new ListTile(
-      title: new Text(_podcst.title),
-      subtitle: new Text(_podcst.author),
-      leading: new Image.network(_podcst.thumbnail),
-      onTap: () => onTap(context),
+    return new FittedBox(
+      fit: BoxFit.scaleDown,
+      alignment: FractionalOffset.centerLeft,
+      child: new Text(text),
+    );
+  }
+}
+
+class PodcastWidget extends StatelessWidget {
+  final Podcst _podcst;
+
+  const PodcastWidget(this._podcst);
+
+  @override
+  Widget build(BuildContext context) {
+
+    final Widget image = new GestureDetector(
+      onTap: () => print(_podcst.title),
+      child: new Hero(
+          key: new Key(_podcst.title),
+          tag: _podcst.title,
+          child: new Image.network(_podcst.thumbnail, fit: BoxFit.cover),
+      ),
+    );
+
+    return new GridTile(
+        child: image,
+        footer: new GridTileBar(
+          backgroundColor: Colors.black45,
+          title: new _GridTitleText(_podcst.title),
+          subtitle: new _GridTitleText(_podcst.author),
+        ),
     );
   }
 }
