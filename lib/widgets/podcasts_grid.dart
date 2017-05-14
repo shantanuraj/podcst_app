@@ -24,7 +24,7 @@ class PodcastWidget extends StatelessWidget {
 
   PodcastWidget(this._podcst);
 
-  onTap(BuildContext context) {
+  void onTap(BuildContext context) {
     Scaffold.of(context)
         .showBottomSheet((context) => new FeedWrapper(url: _podcst.feed));
   }

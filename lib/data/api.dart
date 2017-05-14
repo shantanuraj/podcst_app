@@ -1,9 +1,10 @@
-import 'dart:convert';
 import 'dart:async' show Future;
+import 'dart:convert';
+
 import 'package:flutter/services.dart';
+import 'package:podcst_app/data/feed.dart';
 import 'package:podcst_app/data/podcst.dart';
 import 'package:podcst_app/data/podcst_response.dart';
-import 'package:podcst_app/data/feed.dart';
 
 class PodcstApi {
 

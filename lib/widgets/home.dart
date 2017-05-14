@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'package:podcst_app/widgets/podcasts_grid.dart';
-
 import 'package:podcst_app/data/api.dart';
 import 'package:podcst_app/data/podcst.dart';
+import 'package:podcst_app/widgets/podcasts_grid.dart';
 
 class HomeWidget extends StatefulWidget {
   HomeWidget({Key key, this.title}) : super(key: key);
@@ -25,7 +23,7 @@ class _HomeWidgetState extends State<HomeWidget> {
     PodcstApi.getFeatured().then(onPodcstsLoaded);
   }
 
-  onPodcstsLoaded(List<Podcst> podcsts) {
+  void onPodcstsLoaded(List<Podcst> podcsts) {
     setState(() {
       _isLoading = false;
       _podcsts = podcsts;
@@ -35,7 +33,7 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
 
-    var content;
+    StatelessWidget content;
     if (_isLoading) {
       content = new Text('Loading...');
     } else {
