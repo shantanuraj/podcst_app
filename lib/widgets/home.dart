@@ -16,6 +16,8 @@ class _HomeWidgetState extends State<HomeWidget> {
   bool _isLoading = true;
   List<Podcst> _podcsts;
 
+  final scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     super.initState();
@@ -30,6 +32,13 @@ class _HomeWidgetState extends State<HomeWidget> {
     });
   }
 
+  void _showSnackBar(String text) {
+    scaffoldKey.currentState
+        .showSnackBar(new SnackBar(content: new Text(text)));
+  }
+
+  void _handleSearch() => _showSnackBar("¯\\_(ツ)_/¯");
+
   @override
   Widget build(BuildContext context) {
     StatelessWidget content;
@@ -40,8 +49,15 @@ class _HomeWidgetState extends State<HomeWidget> {
     }
 
     return new Scaffold(
+      key: scaffoldKey,
       appBar: new AppBar(
         title: new Text(widget.title),
+        actions: <Widget>[
+          new IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: _handleSearch,
+          ),
+        ],
       ),
       body: new Center(
         child: content,
