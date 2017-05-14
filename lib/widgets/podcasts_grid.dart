@@ -9,9 +9,27 @@ class PodcastGridWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new ListView(
-        children:
-            this._podcsts.map((podcst) => new PodcastWidget(podcst)).toList());
+    final Orientation orientation = MediaQuery
+        .of(context)
+        .orientation;
+
+    return new Column(
+      children: <Widget>[
+        new Expanded(
+            child: new GridView.count(
+              crossAxisCount: (orientation == Orientation.portrait) ? 2 : 3,
+              mainAxisSpacing: 4.0,
+              crossAxisSpacing: 4.0,
+              padding: const EdgeInsets.all(4.0),
+              childAspectRatio: (orientation == Orientation.portrait)
+                  ? 1.0
+                  : 1.3,
+              children: _podcsts.map((podcst) => new PodcastWidget(podcst))
+                  .toList(),
+            )
+        ),
+      ],
+    );
   }
 }
 
@@ -22,7 +40,7 @@ class PodcastWidget extends StatelessWidget {
 
   void onTap(BuildContext context) {
     Scaffold.of(context).showBottomSheet<FeedWrapper>(
-        (context) => new FeedWrapper(url: _podcst.feed));
+            (context) => new FeedWrapper(url: _podcst.feed));
   }
 
   @override
