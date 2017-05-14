@@ -13,7 +13,6 @@ class FeedWrapper extends StatefulWidget {
 }
 
 class _FeedWrapperState extends State<FeedWrapper> {
-
   final String url;
 
   bool _isLoading;
@@ -25,8 +24,7 @@ class _FeedWrapperState extends State<FeedWrapper> {
   void initState() {
     super.initState();
     _isLoading = true;
-    PodcstApi.getFeed(url)
-        .then(onFeedLoaded);
+    PodcstApi.getFeed(url).then(onFeedLoaded);
   }
 
   void onFeedLoaded(Feed feed) {
@@ -40,12 +38,12 @@ class _FeedWrapperState extends State<FeedWrapper> {
   Widget build(BuildContext context) {
     return new Row(
       children: [
-        _isLoading ?
-        new Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: new Text('Loading...'),
-        ) :
-        new FeedInfo(_feed),
+        _isLoading
+            ? new Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: new Text('Loading...'),
+              )
+            : new FeedInfo(_feed),
       ],
     );
   }

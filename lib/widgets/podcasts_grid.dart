@@ -3,7 +3,6 @@ import 'package:podcst_app/data/podcst.dart';
 import 'package:podcst_app/widgets/feed_info.dart';
 
 class PodcastGridWidget extends StatelessWidget {
-
   final List<Podcst> _podcsts;
 
   PodcastGridWidget(this._podcsts);
@@ -11,22 +10,19 @@ class PodcastGridWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new ListView(
-        children: this._podcsts
-            .map((podcst) => new PodcastWidget(podcst))
-            .toList()
-    );
+        children:
+            this._podcsts.map((podcst) => new PodcastWidget(podcst)).toList());
   }
 }
 
 class PodcastWidget extends StatelessWidget {
-
   final Podcst _podcst;
 
   PodcastWidget(this._podcst);
 
   void onTap(BuildContext context) {
-    Scaffold.of(context)
-        .showBottomSheet<FeedWrapper>((context) => new FeedWrapper(url: _podcst.feed));
+    Scaffold.of(context).showBottomSheet<FeedWrapper>(
+        (context) => new FeedWrapper(url: _podcst.feed));
   }
 
   @override

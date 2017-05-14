@@ -32,7 +32,6 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     StatelessWidget content;
     if (_isLoading) {
       content = new Text('Loading...');

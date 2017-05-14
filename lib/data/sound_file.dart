@@ -3,11 +3,7 @@ class SoundFile {
   final String type;
   final int length;
 
-  const SoundFile({
-    this.url,
-    this.type,
-    this.length
-  });
+  const SoundFile({this.url, this.type, this.length});
 
   static SoundFile parse(Map raw) {
     return new SoundFile(

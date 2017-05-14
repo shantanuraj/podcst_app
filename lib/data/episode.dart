@@ -14,25 +14,25 @@ class Episode {
   final String episodeArt;
   final String showNotes;
 
-  const Episode({
-    this.title,
-    this.summary,
-    this.published,
-    this.cover,
-    this.explicit,
-    this.duration,
-    this.link,
-    this.file,
-    this.author,
-    this.episodeArt,
-    this.showNotes
-  });
+  const Episode(
+      {this.title,
+      this.summary,
+      this.published,
+      this.cover,
+      this.explicit,
+      this.duration,
+      this.link,
+      this.file,
+      this.author,
+      this.episodeArt,
+      this.showNotes});
 
   static Episode parse(Map raw) {
     return new Episode(
       title: raw['title'] as String,
       summary: raw['summary'] as String,
-      published: raw['published'] != null ? raw['published'] as int : kDefaultInt,
+      published:
+          raw['published'] != null ? raw['published'] as int : kDefaultInt,
       cover: raw['cover'] != null ? raw['cover'] as String : kDefaultStr,
       explicit: raw['explicit'] as bool,
       duration: raw['duration'] as int,

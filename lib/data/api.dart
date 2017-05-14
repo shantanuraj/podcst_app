@@ -7,7 +7,6 @@ import 'package:podcst_app/data/podcst.dart';
 import 'package:podcst_app/data/podcst_response.dart';
 
 class PodcstApi {
-
   static final String _baseUrl = 'https://data.podcst.io';
 
   static final String _feed = "/feed";

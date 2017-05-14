@@ -28,7 +28,8 @@ class Feed {
     return new Feed(
       title: raw['title'] as String,
       link: raw['link'] as String,
-      published: raw['published'] != null ? raw['published'] as int : kDefaultInt,
+      published:
+          raw['published'] != null ? raw['published'] as int : kDefaultInt,
       description: raw['description'] as String,
       author: raw['author'] as String,
       cover: raw['cover'] as String,
