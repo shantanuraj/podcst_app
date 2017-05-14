@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:podcst_app/data/podcst.dart';
+import './feed_info.dart';
 
 class PodcastGridWidget extends StatelessWidget {
   final List<Podcst> _podcsts;
@@ -52,10 +53,30 @@ class PodcastWidget extends StatelessWidget {
 
   const PodcastWidget(this._podcst);
 
+  void showFeed(BuildContext context) {
+    Navigator.push(context,
+        new MaterialPageRoute<Null>(
+            builder: (BuildContext context) {
+              return new Scaffold(
+                appBar: new AppBar(
+                  title: new Text(_podcst.title),
+                ),
+                body: new SizedBox.expand(
+                  child: new Hero(
+                    tag: _podcst.title,
+                    child: new FeedInfo(podcst: _podcst),
+                  ),
+                ),
+              );
+            }
+        )
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final Widget image = new GestureDetector(
-      onTap: () => print(_podcst.title),
+      onTap: () => showFeed(context),
       child: new Hero(
         key: new Key(_podcst.title),
         tag: _podcst.title,

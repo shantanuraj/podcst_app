@@ -4,22 +4,22 @@ import 'package:podcst_app/data/api.dart';
 import 'package:podcst_app/data/feed.dart';
 import 'package:podcst_app/data/podcst.dart';
 
-class FeedWrapper extends StatefulWidget {
-  FeedWrapper({Key key, this.podcst}) : super(key: key);
+class FeedInfo extends StatefulWidget {
+  FeedInfo({Key key, this.podcst}) : super(key: key);
 
   final Podcst podcst;
 
   @override
-  _FeedWrapperState createState() => new _FeedWrapperState(podcst);
+  _FeedInfoState createState() => new _FeedInfoState(podcst);
 }
 
-class _FeedWrapperState extends State<FeedWrapper> {
+class _FeedInfoState extends State<FeedInfo> {
   final Podcst _podcst;
 
   bool _isLoading;
   Feed _feed;
 
-  _FeedWrapperState(this._podcst);
+  _FeedInfoState(this._podcst);
 
   @override
   void initState() {
@@ -39,30 +39,16 @@ class _FeedWrapperState extends State<FeedWrapper> {
   Widget build(BuildContext context) {
     return new Row(
       children: [
-        _isLoading
-            ? new Padding(
-          padding: const EdgeInsets.all(32.0),
-          child: new Text('Loading...'),
-        )
-            : new FeedInfo(_feed),
-      ],
-    );
-  }
-}
-
-class FeedInfo extends StatelessWidget {
-  final Feed _feed;
-
-  FeedInfo(this._feed);
-
-  @override
-  Widget build(BuildContext context) {
-    return new Row(
-      children: [
-        new Image.network(
-          _feed.cover,
-          fit: BoxFit.cover,
-          width: 410.0,
+        _isLoading ?
+        new Image.network(_podcst.cover, fit: BoxFit.cover) :
+        new Row(
+          children: [
+            new Image.network(
+              _feed.cover,
+              fit: BoxFit.cover,
+              width: 410.0,
+            ),
+          ],
         ),
       ],
     );
