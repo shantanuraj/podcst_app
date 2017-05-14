@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:podcst_app/data/api.dart';
 import 'package:podcst_app/data/feed.dart';
-import 'package:flutter/painting.dart';
 
 class FeedWrapper extends StatefulWidget {
   FeedWrapper({Key key, this.url}) : super(key: key);
@@ -41,11 +41,11 @@ class _FeedWrapperState extends State<FeedWrapper> {
     return new Row(
       children: [
         _isLoading ?
-          new Padding(
-            padding: const EdgeInsets.all(32.0),
-            child: new Text('Loading...'),
-          ) :
-          new FeedInfo(_feed),
+        new Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: new Text('Loading...'),
+        ) :
+        new FeedInfo(_feed),
       ],
     );
   }
