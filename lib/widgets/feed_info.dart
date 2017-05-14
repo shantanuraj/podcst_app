@@ -29,7 +29,7 @@ class _FeedWrapperState extends State<FeedWrapper> {
         .then(onFeedLoaded);
   }
 
-  onFeedLoaded(Feed feed) {
+  void onFeedLoaded(Feed feed) {
     setState(() {
       _isLoading = false;
       _feed = feed;
