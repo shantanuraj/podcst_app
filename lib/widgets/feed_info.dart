@@ -7,6 +7,10 @@ import 'package:podcst_app/widgets/feed.dart';
 
 const double _kMinFlingVelocity = 800.0;
 
+const Color _kKeyUmbraOpacity = const Color(0x33000000); // alpha = 0.2
+const Color _kKeyPenumbraOpacity = const Color(0x24000000); // alpha = 0.14
+const Color _kAmbientShadowOpacity = const Color(0x1F000000); // alpha = 0.12
+
 class FeedInfo extends StatefulWidget {
   FeedInfo({Key key, this.podcst}) : super(key: key);
 
@@ -72,8 +76,6 @@ class _FeedInfoState extends State<FeedInfo>
 
   void _handleOnScaleUpdate(ScaleUpdateDetails details) {
     setState(() {
-      print(_isLoading);
-      print(_feed);
       _scale = (_previousScale * details.scale).clamp(1.0, 4.0).toDouble();
       // Ensure that image location under the focal point stays in the same place despite scaling.
       _offset = _clampOffset(details.focalPoint - _normalizedOffset * _scale);
@@ -114,7 +116,12 @@ class _FeedInfoState extends State<FeedInfo>
             transform: new Matrix4.identity()
               ..translate(_offset.dx, _offset.dy)
               ..scale(_scale),
-            child: new Image.network(_podcst.cover, fit: BoxFit.cover),
+            child: new Container(
+              child: new Image.network(_podcst.cover, fit: BoxFit.cover),
+              foregroundDecoration: new BoxDecoration(
+                color: Colors.black54,
+              ),
+            ),
           ),
         ),
       );
