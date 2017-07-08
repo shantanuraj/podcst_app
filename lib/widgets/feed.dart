@@ -44,6 +44,14 @@ class FeedItemWidget extends StatelessWidget {
         title: new Text(
           _episode.title,
         ),
+        trailing:new IconButton(
+            icon: new Icon(
+                Icons.play_circle_outline,
+                color: Colors.white,
+                size: 32.0,
+            ),
+            onPressed: null
+        ),
       ),
     );
   }
