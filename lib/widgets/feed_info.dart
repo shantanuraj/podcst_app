@@ -3,6 +3,7 @@ import 'package:flutter/painting.dart';
 import 'package:podcst_app/data/api.dart';
 import 'package:podcst_app/data/feed.dart';
 import 'package:podcst_app/data/podcst.dart';
+import 'package:podcst_app/widgets/feed.dart';
 
 const double _kMinFlingVelocity = 800.0;
 
@@ -103,16 +104,29 @@ class _FeedInfoState extends State<FeedInfo>
 
   @override
   Widget build(BuildContext context) {
-    return new GestureDetector(
-      onScaleStart: _handleOnScaleStart,
-      onScaleUpdate: _handleOnScaleUpdate,
-      onScaleEnd: _handleOnScaleEnd,
-      child: new ClipRect(
-        child: new Transform(
-          transform: new Matrix4.identity()
-            ..translate(_offset.dx, _offset.dy)
-            ..scale(_scale),
-          child: new Image.network(_podcst.cover, fit: BoxFit.cover),
+
+    if (_isLoading) {
+      return new GestureDetector(
+        onScaleStart: _handleOnScaleStart,
+        onScaleUpdate: _handleOnScaleUpdate,
+        onScaleEnd: _handleOnScaleEnd,
+        child: new ClipRect(
+          child: new Transform(
+            transform: new Matrix4.identity()
+              ..translate(_offset.dx, _offset.dy)
+              ..scale(_scale),
+            child: new Image.network(_podcst.cover, fit: BoxFit.cover),
+          ),
+        ),
+      );
+    }
+
+    return new Container(
+      child: new FeedWidget(_feed),
+      decoration: new BoxDecoration(
+        image: new DecorationImage(
+            image: new NetworkImage(_podcst.cover),
+            fit: BoxFit.cover,
         ),
       ),
     );
