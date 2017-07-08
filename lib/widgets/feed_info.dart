@@ -117,9 +117,14 @@ class _FeedInfoState extends State<FeedInfo>
               ..translate(_offset.dx, _offset.dy)
               ..scale(_scale),
             child: new Container(
-              child: new Image.network(_podcst.cover, fit: BoxFit.cover),
-              foregroundDecoration: new BoxDecoration(
-                color: Colors.black54,
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  new LinearProgressIndicator(value: null),
+                  new Expanded(
+                    child: new Image.network(_podcst.cover, fit: BoxFit.cover),
+                  ),
+                ],
               ),
             ),
           ),

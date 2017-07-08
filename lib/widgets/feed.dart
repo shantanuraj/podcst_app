@@ -17,15 +17,15 @@ class FeedWidget extends StatelessWidget {
         children: <Widget>[
           new Expanded(
               child: new ListView(
-                children: ListTile
-                    .divideTiles(
+            children: ListTile
+                .divideTiles(
                   context: context,
                   color: Colors.white70,
                   tiles: _feed.episodes
                       .map((episode) => new FeedItemWidget(episode)),
                 )
-                    .toList(),
-              )),
+                .toList(),
+          )),
         ],
       ),
     );
