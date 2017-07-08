@@ -9,25 +9,20 @@ class PodcastGridWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Orientation orientation = MediaQuery
-        .of(context)
-        .orientation;
+    final Orientation orientation = MediaQuery.of(context).orientation;
 
     return new Column(
       children: <Widget>[
         new Expanded(
             child: new GridView.count(
-              crossAxisCount: (orientation == Orientation.portrait) ? 2 : 3,
-              mainAxisSpacing: 4.0,
-              crossAxisSpacing: 4.0,
-              padding: const EdgeInsets.all(4.0),
-              childAspectRatio: (orientation == Orientation.portrait)
-                  ? 1.0
-                  : 1.3,
-              children: _podcsts.map((podcst) => new PodcastWidget(podcst))
-                  .toList(),
-            )
-        ),
+          crossAxisCount: (orientation == Orientation.portrait) ? 2 : 3,
+          mainAxisSpacing: 4.0,
+          crossAxisSpacing: 4.0,
+          padding: const EdgeInsets.all(4.0),
+          childAspectRatio: (orientation == Orientation.portrait) ? 1.0 : 1.3,
+          children:
+              _podcsts.map((podcst) => new PodcastWidget(podcst)).toList(),
+        )),
       ],
     );
   }
@@ -55,22 +50,19 @@ class PodcastWidget extends StatelessWidget {
 
   void showFeed(BuildContext context) {
     Navigator.push(context,
-        new MaterialPageRoute<Null>(
-            builder: (BuildContext context) {
-              return new Scaffold(
-                appBar: new AppBar(
-                  title: new Text(_podcst.title),
-                ),
-                body: new SizedBox.expand(
-                  child: new Hero(
-                    tag: _podcst.title,
-                    child: new FeedInfo(podcst: _podcst),
-                  ),
-                ),
-              );
-            }
-        )
-    );
+        new MaterialPageRoute<Null>(builder: (BuildContext context) {
+      return new Scaffold(
+        appBar: new AppBar(
+          title: new Text(_podcst.title),
+        ),
+        body: new SizedBox.expand(
+          child: new Hero(
+            tag: _podcst.title,
+            child: new FeedInfo(podcst: _podcst),
+          ),
+        ),
+      );
+    }));
   }
 
   @override

@@ -54,8 +54,8 @@ class _HomeWidgetState extends State<HomeWidget> {
         title: new Text(widget.title),
         actions: <Widget>[
           new IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: _handleSearch,
+            icon: const Icon(Icons.search),
+            onPressed: _handleSearch,
           ),
         ],
       ),

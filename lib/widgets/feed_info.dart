@@ -40,7 +40,6 @@ class _FeedInfoState extends State<FeedInfo>
     PodcstApi.getFeed(_podcst.feed).then(onFeedLoaded);
   }
 
-
   @override
   void dispose() {
     super.dispose();
@@ -51,8 +50,8 @@ class _FeedInfoState extends State<FeedInfo>
   // then the minimum offset value is w - _scale * w, h - _scale * h.
   Offset _clampOffset(Offset offset) {
     final Size size = context.size;
-    final Offset minOffset = new Offset(size.width, size.height) *
-        (1.0 - _scale);
+    final Offset minOffset =
+        new Offset(size.width, size.height) * (1.0 - _scale);
     return new Offset(offset.dx.clamp(minOffset.dx, 0.0).toDouble(),
         offset.dy.clamp(minOffset.dy, 0.0).toDouble());
   }
@@ -82,14 +81,14 @@ class _FeedInfoState extends State<FeedInfo>
 
   void _handleOnScaleEnd(ScaleEndDetails details) {
     final double magnitude = details.velocity.pixelsPerSecond.distance;
-    if (magnitude < _kMinFlingVelocity)
+    if (magnitude < _kMinFlingVelocity) {
       return;
+    }
     final Offset direction = details.velocity.pixelsPerSecond / magnitude;
     final double distance = (Offset.zero & context.size).shortestSide;
     _flingAnimation = new Tween<Offset>(
-        begin: _offset,
-        end: _clampOffset(_offset + direction * distance)
-    ).animate(_controller);
+            begin: _offset, end: _clampOffset(_offset + direction * distance))
+        .animate(_controller);
   }
 
   void onFeedLoaded(Feed feed) {
@@ -110,10 +109,10 @@ class _FeedInfoState extends State<FeedInfo>
       onScaleEnd: _handleOnScaleEnd,
       child: new ClipRect(
         child: new Transform(
-            transform: new Matrix4.identity()
-              ..translate(_offset.dx, _offset.dy)
-              ..scale(_scale),
-            child: new Image.network(_podcst.cover, fit: BoxFit.cover),
+          transform: new Matrix4.identity()
+            ..translate(_offset.dx, _offset.dy)
+            ..scale(_scale),
+          child: new Image.network(_podcst.cover, fit: BoxFit.cover),
         ),
       ),
     );
