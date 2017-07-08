@@ -27,10 +27,20 @@ class FeedItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new ListTile(
-      title: new Text(
-          _episode.title,
-        style: new TextStyle(fontWeight: FontWeight.bold),
+    return new Container(
+      decoration: new BoxDecoration(
+        boxShadow: <BoxShadow>[
+          new BoxShadow(),
+        ]
+      ),
+      padding: const EdgeInsets.fromLTRB(16.0, 32.0, 16.0, 32.0),
+      child: new Row(
+        children: <Widget>[
+          new Text(
+            _episode.title,
+            style: new TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ],
       ),
     );
   }
