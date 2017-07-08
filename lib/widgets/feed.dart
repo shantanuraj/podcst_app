@@ -27,12 +27,11 @@ class FeedItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Row(
-      children: <Widget>[
-        new Text(
-         _episode.title
-        )
-      ],
+    return new ListTile(
+      title: new Text(
+          _episode.title,
+        style: new TextStyle(fontWeight: FontWeight.bold),
+      ),
     );
   }
 }
