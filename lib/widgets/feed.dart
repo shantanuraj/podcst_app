@@ -9,20 +9,25 @@ class FeedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Column(
-      children: <Widget>[
-        new Expanded(
-            child: new ListView(
-          children: ListTile
-              .divideTiles(
-                context: context,
-                color: Colors.white,
-                tiles: _feed.episodes
-                    .map((episode) => new FeedItemWidget(episode)),
-              )
-              .toList(),
-        )),
-      ],
+    return new Container(
+      decoration: new BoxDecoration(
+        color: Colors.black45,
+      ),
+      child: new Column(
+        children: <Widget>[
+          new Expanded(
+              child: new ListView(
+                children: ListTile
+                    .divideTiles(
+                  context: context,
+                  color: Colors.white70,
+                  tiles: _feed.episodes
+                      .map((episode) => new FeedItemWidget(episode)),
+                )
+                    .toList(),
+              )),
+        ],
+      ),
     );
   }
 }
@@ -35,9 +40,6 @@ class FeedItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      decoration: new BoxDecoration(
-        color: Colors.black45,
-      ),
       child: new ListTile(
         title: new Text(
           _episode.title,
