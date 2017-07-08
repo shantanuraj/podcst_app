@@ -27,6 +27,7 @@ class _FeedInfoState extends State<FeedInfo>
   double _scale = 1.0;
   Offset _normalizedOffset;
   double _previousScale;
+  bool _cancelRequest = false;
 
   _FeedInfoState(this._podcst);
 
@@ -37,6 +38,13 @@ class _FeedInfoState extends State<FeedInfo>
     _controller = new AnimationController(vsync: this)
       ..addListener(_handleFlingAnimation);
     PodcstApi.getFeed(_podcst.feed).then(onFeedLoaded);
+  }
+
+
+  @override
+  void dispose() {
+    super.dispose();
+    _cancelRequest = true;
   }
 
   // The maximum offset value is 0,0. If the size of this renderer's box is w,h
@@ -59,13 +67,13 @@ class _FeedInfoState extends State<FeedInfo>
     setState(() {
       _previousScale = _scale;
       _normalizedOffset = (details.focalPoint - _offset) / _scale;
-      // The fling animation stops if an input gesture starts.
-      _controller.stop();
     });
   }
 
   void _handleOnScaleUpdate(ScaleUpdateDetails details) {
     setState(() {
+      print(_isLoading);
+      print(_feed);
       _scale = (_previousScale * details.scale).clamp(1.0, 4.0).toDouble();
       // Ensure that image location under the focal point stays in the same place despite scaling.
       _offset = _clampOffset(details.focalPoint - _normalizedOffset * _scale);
@@ -82,12 +90,12 @@ class _FeedInfoState extends State<FeedInfo>
         begin: _offset,
         end: _clampOffset(_offset + direction * distance)
     ).animate(_controller);
-    _controller
-      ..value = 0.0
-      ..fling(velocity: magnitude / 1000.0);
   }
 
   void onFeedLoaded(Feed feed) {
+    if (_cancelRequest) {
+      return;
+    }
     setState(() {
       _isLoading = false;
       _feed = feed;
