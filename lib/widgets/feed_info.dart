@@ -104,7 +104,6 @@ class _FeedInfoState extends State<FeedInfo>
 
   @override
   Widget build(BuildContext context) {
-
     if (_isLoading) {
       return new GestureDetector(
         onScaleStart: _handleOnScaleStart,
@@ -125,8 +124,8 @@ class _FeedInfoState extends State<FeedInfo>
       child: new FeedWidget(_feed),
       decoration: new BoxDecoration(
         image: new DecorationImage(
-            image: new NetworkImage(_podcst.cover),
-            fit: BoxFit.cover,
+          image: new NetworkImage(_podcst.cover),
+          fit: BoxFit.cover,
         ),
       ),
     );

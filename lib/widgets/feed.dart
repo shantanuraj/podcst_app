@@ -11,9 +11,16 @@ class FeedWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Column(
       children: <Widget>[
-        new Expanded(child: new ListView(
-          children:
-            _feed.episodes.map((episode) => new FeedItemWidget(episode)).toList()
+        new Expanded(
+            child: new ListView(
+          children: ListTile
+              .divideTiles(
+                context: context,
+                color: Colors.white,
+                tiles: _feed.episodes
+                    .map((episode) => new FeedItemWidget(episode)),
+              )
+              .toList(),
         )),
       ],
     );
@@ -29,18 +36,13 @@ class FeedItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Container(
       decoration: new BoxDecoration(
-        boxShadow: <BoxShadow>[
-          new BoxShadow(),
-        ]
+        color: Colors.black45,
       ),
-      padding: const EdgeInsets.fromLTRB(16.0, 32.0, 16.0, 32.0),
-      child: new Row(
-        children: <Widget>[
-          new Text(
-            _episode.title,
-            style: new TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ],
+      child: new ListTile(
+        title: new Text(
+          _episode.title,
+          style: new TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
