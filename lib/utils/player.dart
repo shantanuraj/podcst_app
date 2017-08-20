@@ -8,14 +8,12 @@ enum PlayerState {
   stopped
 }
 
-class Audio {
-  String url;
-  PlayerState playerState = PlayerState.stopped;
-  final AudioPlayer player = new AudioPlayer();
+class Player {
+  static String url;
+  static PlayerState playerState = PlayerState.stopped;
+  static final AudioPlayer player = new AudioPlayer();
 
-  Audio(this.url);
-
-  Future<PlayerState> play() async {
+  static Future<PlayerState> play(String url) async {
     final int result = await player.play(url);
     if (result == 1) {
       playerState = PlayerState.playing;
@@ -23,7 +21,7 @@ class Audio {
     return playerState;
   }
 
-  Future<PlayerState> pause() async {
+  static Future<PlayerState> pause() async {
     final int result = await player.pause();
     if (result == 1) {
       playerState = PlayerState.paused;
@@ -31,7 +29,7 @@ class Audio {
     return playerState;
   }
 
-  Future<PlayerState> stop() async {
+  static Future<PlayerState> stop() async {
     final int result = await player.stop();
     if (result == 1) {
       playerState = PlayerState.stopped;
