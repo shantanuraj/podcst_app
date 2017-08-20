@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:podcst_app/data/feed.dart';
 import 'package:podcst_app/data/episode.dart';
+import 'package:podcst_app/utils/audio.dart';
 
 class FeedWidget extends StatelessWidget {
   final Feed _feed;
@@ -22,7 +24,10 @@ class FeedWidget extends StatelessWidget {
                   context: context,
                   color: Colors.white70,
                   tiles: _feed.episodes
-                      .map((episode) => new FeedItemWidget(episode)),
+                      .map((episode) => new FeedItemWidget(
+                        episode,
+                        new Audio(episode.file.url)
+                      )),
                 )
                 .toList(),
           )),
@@ -34,8 +39,9 @@ class FeedWidget extends StatelessWidget {
 
 class FeedItemWidget extends StatelessWidget {
   final Episode _episode;
+  final Audio _player;
 
-  const FeedItemWidget(this._episode);
+  const FeedItemWidget(this._episode, this._player);
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +56,7 @@ class FeedItemWidget extends StatelessWidget {
                 color: Colors.white,
                 size: 32.0,
             ),
-            onPressed: null
+            onPressed: () => _player.play()
         ),
       ),
     );
